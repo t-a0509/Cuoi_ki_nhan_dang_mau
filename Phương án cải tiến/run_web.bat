@@ -3,8 +3,10 @@ chcp 65001 > nul
 title AgriVision AI - Web Demo
 cd /d "%~dp0"
 
-rem Chọn Python: ưu tiên venv_gpu, sau đó venv, cuối cùng là python hệ thống
+rem Chọn Python: ưu tiên venv_gpu, sau đó venv (trong thư mục này hoặc thư mục cha), cuối cùng là python hệ thống
 set "PY=python"
+if exist "..\venv\Scripts\python.exe" set "PY=..\venv\Scripts\python.exe"
+if exist "..\venv_gpu\Scripts\python.exe" set "PY=..\venv_gpu\Scripts\python.exe"
 if exist ".\venv\Scripts\python.exe" set "PY=.\venv\Scripts\python.exe"
 if exist ".\venv_gpu\Scripts\python.exe" set "PY=.\venv_gpu\Scripts\python.exe"
 

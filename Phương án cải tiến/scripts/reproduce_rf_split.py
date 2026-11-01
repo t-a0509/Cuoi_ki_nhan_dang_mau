@@ -1,6 +1,6 @@
 """
 Tái tạo đúng cách chia train/val/test theo nhóm ảnh gần trùng của phương án Random Forest
-(notebook Phương án cơ sở/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb, mục 5.4–5.6), rồi ghi ra
+(notebook ../Phương án cơ sở/Plant_Disease_Detection.ipynb, mục 5.4–5.6), rồi ghi ra
 data/dataset_splits_group.csv cùng định dạng với data/dataset_splits.csv.
 
 Các hàm dưới đây chép nguyên logic của notebook:

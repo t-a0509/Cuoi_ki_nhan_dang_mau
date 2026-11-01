@@ -1,26 +1,26 @@
 # Chỉ đưa mã nguồn, hướng dẫn và file chia tập lên repo
 /*
 !/.gitignore
-!/README.md
-!/requirements.txt
-!/run_web.bat
-!/src/
-!/scripts/
-!/demo/
-!/data/
-/data/*
-!/data/dataset_splits_group.csv
-!/data/dataset_splits.csv
-!/data/rf_groups.csv
-!/data/corrupt_images.csv
-!/models/
-/models/*
-!/models/tier3_class_mapping.json
 !/Phương án cơ sở/
 /Phương án cơ sở/*
-!/Phương án cơ sở/Nhận_dạng_mẫu/
-/Phương án cơ sở/Nhận_dạng_mẫu/*
-!/Phương án cơ sở/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb
+!/Phương án cơ sở/Plant_Disease_Detection.ipynb
+!/Phương án cải tiến/
+/Phương án cải tiến/*
+!/Phương án cải tiến/README.md
+!/Phương án cải tiến/requirements.txt
+!/Phương án cải tiến/run_web.bat
+!/Phương án cải tiến/src/
+!/Phương án cải tiến/scripts/
+!/Phương án cải tiến/demo/
+!/Phương án cải tiến/data/
+/Phương án cải tiến/data/*
+!/Phương án cải tiến/data/dataset_splits_group.csv
+!/Phương án cải tiến/data/dataset_splits.csv
+!/Phương án cải tiến/data/rf_groups.csv
+!/Phương án cải tiến/data/corrupt_images.csv
+!/Phương án cải tiến/models/
+/Phương án cải tiến/models/*
+!/Phương án cải tiến/models/tier3_class_mapping.json
 
 __pycache__/
 *.pyc

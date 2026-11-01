@@ -4,13 +4,15 @@ Bài tập cuối kỳ môn Nhận dạng mẫu. Đầu vào là ảnh một chi
 
 | Phương án | Mã nguồn | Kết quả trên tập test 5.668 ảnh |
 |---|---|---|
-| Cơ sở: 1.977 đặc trưng thủ công + Random Forest 500 cây | `Phương án cơ sở/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb` | Accuracy 82,07%, macro-F1 0,7931 |
+| Cơ sở: 1.977 đặc trưng thủ công + Random Forest 500 cây | `../Phương án cơ sở/Plant_Disease_Detection.ipynb` | Accuracy 82,07%, macro-F1 0,7931 |
 | **Cải tiến: ResNet50 học chuyển giao** | `src/`, `scripts/`, `demo/` | **Accuracy 98,57%, macro-F1 0,9769** |
 
 Hai phương án dùng chung một cách chia tập (theo nhóm ảnh gần trùng) và được chấm trên cùng tập test.
 Báo cáo LaTeX ở `Nhận_dạng_bệnh_cây_trồng_qua_ảnh_lá/` (`main.tex`, biên dịch bằng pdfLaTeX hoặc XeLaTeX, ví dụ trên Overleaf).
 
 ## Chạy nhanh demo
+
+Mọi lệnh trong README chạy từ thư mục `Phương án cải tiến/` (`cd "Phương án cải tiến"`).
 
 ```bash
 pip install -r requirements.txt
@@ -57,7 +59,7 @@ Nếu có GPU NVIDIA, cài torch/torchvision bản CUDA trước theo <https://p
 
 Biến môi trường `PV_SPLIT` chọn cách chia: `PV_SPLIT=group` dùng `data/dataset_splits_group.csv`, lưu mô hình vào
 `models/tier3_resnet50_group.pth` và kết quả vào `results/group/`. Không đặt biến thì dùng cách chia ngẫu nhiên và `results/`.
-Chạy các lệnh từ thư mục gốc (PowerShell: `$env:PV_SPLIT="group"` thay cho `export`). Thời gian đo trên GTX 1060 3 GB.
+Chạy các lệnh từ thư mục `Phương án cải tiến/` (PowerShell: `$env:PV_SPLIT="group"` thay cho `export`). Thời gian đo trên GTX 1060 3 GB.
 
 | Bước | Lệnh | Đầu ra chính | Thời gian |
 |---|---|---|---|
@@ -152,7 +154,7 @@ models/    tier3_resnet50_group.pth, tier3_class_mapping.json
 results/   group/ (kết quả ResNet50 trên cách chia theo nhóm), eda/ (thống kê ảnh), comparison/group/ (so sánh),
            các file ở gốc: kết quả trên cách chia ngẫu nhiên
 data/      dataset_splits_group.csv, rf_groups.csv, dataset_splits.csv, corrupt_images.csv, raw/ (tự tải về)
-Phương án cơ sở/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb   notebook phương án cơ sở (Random Forest)
+../Phương án cơ sở/Plant_Disease_Detection.ipynb   notebook phương án cơ sở (Random Forest)
 Nhận_dạng_bệnh_cây_trồng_qua_ảnh_lá/   báo cáo LaTeX: main.tex, bia.tex (trang bìa), figures/
 ```
 
