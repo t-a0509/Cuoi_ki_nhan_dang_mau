@@ -1,0 +1,17 @@
+sample,class_name,rel_path,split_group,replaced
+01_Ca_chua_chay_som.JPG,Tomato___Early_blight,raw/archive/plantvillage dataset/color/Tomato___Early_blight/01f87f04-ff38-4aba-b7d1-587aa06e5282___RS_Erly.B 7851.JPG,test,True
+02_Ca_chua_suong_mai.JPG,Tomato___Late_blight,raw/archive/plantvillage dataset/color/Tomato___Late_blight/013f987a-9371-4763-a104-ea6f326e584b___GHLB2 Leaf 8556.JPG,test,True
+03_Ca_chua_khoe_manh.JPG,Tomato___healthy,raw/archive/plantvillage dataset/color/Tomato___healthy/0184dc6b-bfc1-4515-ac59-bbadaf524e1a___GH_HL Leaf 422.1.JPG,test,True
+04_Ca_chua_xoan_vang_la.JPG,Tomato___Tomato_Yellow_Leaf_Curl_Virus,raw/archive/plantvillage dataset/color/Tomato___Tomato_Yellow_Leaf_Curl_Virus/01512b8e-6589-41ce-82f1-e16a24da38e7___YLCV_GCREC 2099.JPG,test,True
+05_Tao_benh_vay.JPG,Apple___Apple_scab,raw/archive/plantvillage dataset/color/Apple___Apple_scab/0261a6e4-21f8-481a-8827-b674e6955644___FREC_Scab 3055.JPG,test,True
+06_Tao_thoi_den.JPG,Apple___Black_rot,raw/archive/plantvillage dataset/color/Apple___Black_rot/0199a733-6d3f-4e66-a903-2d1d34457871___JR_FrgE.S 3079.JPG,test,True
+07_Tao_khoe_manh.JPG,Apple___healthy,raw/archive/plantvillage dataset/color/Apple___healthy/0181db4e-718e-41bc-b6ed-92863471fa85___RS_HL 5941.JPG,test,True
+08_Ngo_ri_sat.JPG,Corn_(maize)___Common_rust_,raw/archive/plantvillage dataset/color/Corn_(maize)___Common_rust_/RS_Rust 1574.JPG,test,True
+09_Ngo_chay_la.JPG,Corn_(maize)___Northern_Leaf_Blight,raw/archive/plantvillage dataset/color/Corn_(maize)___Northern_Leaf_Blight/9ebe7867-1d2c-4d72-8a7f-ff45ea5fa534___RS_NLB 3672 copy3.jpg,test,False
+10_Ngo_khoe_manh.JPG,Corn_(maize)___healthy,raw/archive/plantvillage dataset/color/Corn_(maize)___healthy/026bd735-b9f4-4eab-86f3-23df15dbec95___R.S_HL 7938 copy.jpg,test,True
+11_Nho_thoi_den.JPG,Grape___Black_rot,raw/archive/plantvillage dataset/color/Grape___Black_rot/00090b0f-c140-4e77-8d20-d39f67b75fcc___FAM_B.Rot 0376.JPG,test,True
+12_Nho_khoe_manh.JPG,Grape___healthy,raw/archive/plantvillage dataset/color/Grape___healthy/0163a6aa-fbf8-47c5-965f-59b6efe8bfe5___Mt.N.V_HL 6103.JPG,test,True
+13_Khoai_tay_chay_som.JPG,Potato___Early_blight,raw/archive/plantvillage dataset/color/Potato___Early_blight/07baabd8-e118-47dd-9d8d-132d4347836a___RS_Early.B 8555.JPG,test,True
+14_Khoai_tay_moc_suong.JPG,Potato___Late_blight,raw/archive/plantvillage dataset/color/Potato___Late_blight/0114b195-844c-4978-93a9-b0d5aae010f1___RS_LB 2738.JPG,test,True
+15_Ot_chuong_dom_vi_khuan.JPG,"Pepper,_bell___Bacterial_spot","raw/archive/plantvillage dataset/color/Pepper,_bell___Bacterial_spot/bbda7917-5169-48e8-b041-9ee38aabb29d___JR_B.Spot 3211.JPG",test,False
+16_Dau_tay_chay_la.JPG,Strawberry___Leaf_scorch,raw/archive/plantvillage dataset/color/Strawberry___Leaf_scorch/0406315f-ef03-4f67-bee9-9583d2731760___RS_L.Scorch 0912.JPG,test,True

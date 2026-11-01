@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿 AgriVision AI — Hệ Thống Chẩn Đoán Bệnh Cây Trồng</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+    <div class="glow-bg-2"></div>
+
+    <div class="app-container">
+        <!-- HEADER -->
+        <header class="main-header">
+            <div class="logo-area">
+                <div class="leaf-icon-badge">
+                    <span class="icon">🌿</span>
+                    <span class="pulse-ring"></span>
+                </div>
+                <div>
+                    <h1 class="app-title">AgriVision AI <span class="badge-tag">Nhận dạng mẫu</span></h1>
+                    <p class="app-subtitle">Hệ Thống Nhận Dạng Bệnh Cây Trồng Đa Tầng (38 Lớp PlantVillage)</p>
+                </div>
+            </div>
+            
+            <div class="system-status-pills">
+                <div class="status-pill" id="gpuStatusPill">
+                    <span class="status-dot"></span>
+                    <span id="gpuStatusText">Đang kết nối GPU...</span>
+                </div>
+                <div class="status-pill model-pill">
+                    <span class="star-icon">★</span>
+                    <span>Tầng 3: ResNet50 Fine-tuned</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN GRID LAYOUT -->
+        <main class="dashboard-grid">
+            <!-- LEFT PANEL: UPLOAD & INPUT -->
+            <section class="card panel-upload">
+                <div class="panel-header">
+                    <h2 class="panel-title">1. Tải Ảnh Lá Cây</h2>
+                    <span class="step-num">Step 01</span>
+                </div>
+
+                <!-- Dropzone Area -->
+                <div class="dropzone" id="dropzone">
+                    <input type="file" id="fileInput" accept="image/*" class="file-input-hidden">
+                    <div class="dropzone-content" id="dropzonePrompt">
+                        <div class="upload-icon-circle">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <p class="dropzone-primary-text">Kéo thả ảnh vào đây hoặc <span class="browse-link">chọn từ máy</span></p>
+                        <p class="dropzone-hint">Hỗ trợ JPG, PNG, WEBP (Tự động tiền xử lý về 224×224)</p>
+                    </div>
+
+                    <!-- Image Preview View -->
+                    <div class="preview-container hidden" id="previewContainer">
+                        <img id="imagePreview" src="" alt="Ảnh lá tải lên" class="preview-img">
+                        <div class="scanner-laser" id="scannerLaser"></div>
+                        <button class="btn-change-image" id="btnChangeImage" title="Chọn ảnh khác">✕ Chọn ảnh khác</button>
+                    </div>
+                </div>
+
+                <!-- Quick Samples -->
+                <div class="samples-section">
+                    <p class="samples-title">⚡ Ảnh mẫu lấy từ tập test của cách chia theo nhóm (mô hình chưa thấy khi huấn luyện):</p>
+                    <div class="sample-chips" id="sampleChips">
+                        <button class="chip" data-src="/static/samples/01_Ca_chua_chay_som.JPG">🍅 Cà chua - Cháy sớm</button>
+                        <button class="chip" data-src="/static/samples/02_Ca_chua_suong_mai.JPG">🍅 Cà chua - Sương mai</button>
+                        <button class="chip" data-src="/static/samples/03_Ca_chua_khoe_manh.JPG">🍅 Cà chua - Khỏe mạnh</button>
+                        <button class="chip" data-src="/static/samples/04_Ca_chua_xoan_vang_la.JPG">🍅 Cà chua - Xoăn vàng lá</button>
+                        <button class="chip" data-src="/static/samples/05_Tao_benh_vay.JPG">🍎 Táo - Bệnh vảy</button>
+                        <button class="chip" data-src="/static/samples/06_Tao_thoi_den.JPG">🍎 Táo - Thối đen</button>
+                        <button class="chip" data-src="/static/samples/07_Tao_khoe_manh.JPG">🍎 Táo - Khỏe mạnh</button>
+                        <button class="chip" data-src="/static/samples/08_Ngo_ri_sat.JPG">🌽 Ngô - Rỉ sắt</button>
+                        <button class="chip" data-src="/static/samples/09_Ngo_chay_la.JPG">🌽 Ngô - Cháy lá</button>
+                        <button class="chip" data-src="/static/samples/10_Ngo_khoe_manh.JPG">🌽 Ngô - Khỏe mạnh</button>
+                        <button class="chip" data-src="/static/samples/11_Nho_thoi_den.JPG">🍇 Nho - Thối đen</button>
+                        <button class="chip" data-src="/static/samples/12_Nho_khoe_manh.JPG">🍇 Nho - Khỏe mạnh</button>
+                        <button class="chip" data-src="/static/samples/13_Khoai_tay_chay_som.JPG">🥔 Khoai tây - Cháy sớm</button>
+                        <button class="chip" data-src="/static/samples/14_Khoai_tay_moc_suong.JPG">🥔 Khoai tây - Mốc sương</button>
+                        <button class="chip" data-src="/static/samples/15_Ot_chuong_dom_vi_khuan.JPG">🌶️ Ớt chuông - Đốm vi khuẩn</button>
+                        <button class="chip" data-src="/static/samples/16_Dau_tay_chay_la.JPG">🍓 Dâu tây - Cháy lá</button>
+                    </div>
+                </div>
+
+                <!-- Image Filters (robustness test) -->
+                <div class="samples-section filters-section">
+                    <p class="samples-title">🧪 Biến đổi ảnh trước khi đưa vào mô hình (thử độ bền):</p>
+                    <div class="sample-chips" id="filterChips">
+                        <button class="chip filter-chip active" data-filter="none">Ảnh gốc</button>
+                        <button class="chip filter-chip" data-filter="gray">Ảnh xám</button>
+                        <button class="chip filter-chip" data-filter="blur">Làm mờ</button>
+                        <button class="chip filter-chip" data-filter="dark">Giảm sáng 50%</button>
+                        <button class="chip filter-chip" data-filter="lowres">Độ phân giải 64px</button>
+                        <button class="chip filter-chip" data-filter="noise">Nhiễu</button>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <button class="btn-primary" id="btnPredict" disabled>
+                    <span class="btn-icon">⚡</span>
+                    <span class="btn-text">Phân Tích & Chẩn Đoán</span>
+                    <span class="loader-spinner hidden" id="btnSpinner"></span>
+                </button>
+            </section>
+
+            <!-- RIGHT PANEL: DIAGNOSIS RESULTS -->
+            <section class="card panel-results">
+                <div class="panel-header">
+                    <h2 class="panel-title">2. Kết Quả Chẩn Đoán Đa Tầng</h2>
+                    <span class="step-num">Step 02</span>
+                </div>
+
+                <!-- Tier Navigation Tabs -->
+                <div class="tier-tabs">
+                    <button class="tab-btn active" id="tabTier3" data-tier="tier3">
+                        <span class="tab-badge">Mục tiêu</span>
+                        Tầng 3: ResNet50 (Fine-tuned)
+                    </button>
+                    <button class="tab-btn" id="tabTier2" data-tier="tier2">
+                        Tầng 2: Deep Feat + SVM
+                    </button>
+                    <button class="tab-btn" id="tabTier1" data-tier="tier1">
+                        Tầng 1: Handcrafted + SVM
+                    </button>
+                </div>
+
+                <!-- Empty Placeholder State -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">🍃</div>
+                    <h3>Chưa có dữ liệu phân tích</h3>
+                    <p>Hãy tải lên một tấm ảnh lá cây ở cột bên trái và bấm <strong>"Phân Tích & Chẩn Đoán"</strong> để AI quét bệnh.</p>
+                </div>
+
+                <!-- Active Results Content -->
+                <div class="results-content hidden" id="resultsContent">
+                    <!-- Top Diagnosis Hero Banner -->
+                    <div class="diagnosis-banner" id="diagnosisBanner">
+                        <div class="diagnosis-info">
+                            <span class="status-tag" id="statusTag">Chẩn đoán</span>
+                            <h3 class="diagnosis-name" id="diagnosisName">Tên Bệnh Cây</h3>
+                            <p class="diagnosis-latin" id="diagnosisRaw">Raw_Class_Name</p>
+                        </div>
+                        <div class="confidence-circle-box">
+                            <span class="confidence-val" id="confidenceVal">98.5%</span>
+                            <span class="confidence-label">Độ tin cậy</span>
+                        </div>
+                    </div>
+
+                    <!-- Uncertainty warning -->
+                    <div class="uncertain-notice hidden" id="uncertainNotice">
+                        ⚠️ <span id="uncertainText">Độ tin cậy thấp hơn ngưỡng.</span>
+                    </div>
+
+                    <!-- Latency & Model Specs Pill -->
+                    <div class="latency-row">
+                        <span class="metric-badge" id="latencyBadge">⚡ Tốc độ suy luận: <strong>-- ms</strong></span>
+                        <span class="metric-badge" id="accuracyBadge">🎯 Accuracy trên tập test: <strong>--</strong></span>
+                        <span class="metric-badge" id="filterBadge">🧪 Bộ lọc: <strong>Ảnh gốc</strong></span>
+                    </div>
+
+                    <!-- Model input & Grad-CAM -->
+                    <div class="breakdown-card">
+                        <h4 class="breakdown-title">🔥 Vùng mô hình chú ý (Grad-CAM, layer4)</h4>
+                        <div class="cam-grid">
+                            <figure>
+                                <img id="inputImage" alt="Ảnh đưa vào mô hình" class="cam-img">
+                                <figcaption>Ảnh đưa vào mô hình (224×224)</figcaption>
+                            </figure>
+                            <figure>
+                                <img id="gradcamImage" alt="Grad-CAM" class="cam-img">
+                                <figcaption>Màu đỏ = vùng ảnh hưởng nhiều nhất đến dự đoán</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <!-- Top 5 Predictions Breakdown Bar Chart -->
+                    <div class="breakdown-card">
+                        <h4 class="breakdown-title">📊 Top 5 Khả Năng Cao Nhất</h4>
+                        <div class="prediction-bars" id="predictionBars">
+                            <!-- Injected by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Treatment & Actionable Advice -->
+                    <div class="treatment-card" id="treatmentCard">
+                        <div class="treatment-header">
+                            <span class="treatment-icon">💊</span>
+                            <h4 class="treatment-title">Khuyến Nghị Điều Trị & Phòng Ngừa Cho Nông Dân</h4>
+                        </div>
+                        <p class="treatment-text" id="treatmentText">Đang tải hướng dẫn...</p>
+                    </div>
+                </div>
+
+                <!-- Teammate Tier Fallback Notice -->
+                <div class="fallback-notice hidden" id="fallbackNotice">
+                    <div class="notice-icon">⏳</div>
+                    <h3 id="fallbackTitle">Mô hình chưa sẵn sàng</h3>
+                    <p id="fallbackDesc">File model của tầng này chưa được nạp vào thư mục models/.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="app-footer">
+            <p>🌿 Đề tài: <strong>Phát hiện bệnh cây trồng qua ảnh lá — So sánh đặc trưng thủ công, Deep Features và Fine-tuning</strong></p>
+            <p class="footer-meta">Môn: Nhận dạng mẫu (Cao học / Thạc sĩ) | Phụ trách: <strong>Tầng 3 (Fine-tuning ResNet50) & Web Demo</strong></p>
+        </footer>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

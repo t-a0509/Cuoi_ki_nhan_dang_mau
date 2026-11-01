@@ -1,0 +1,16 @@
+# Đã kiểm tra với Python 3.12, torch 2.6.0+cu124, torchvision 0.21.0+cu124, scikit-learn 1.9.1, flask 3.1.3
+# Có GPU NVIDIA: cài torch/torchvision bản CUDA trước theo hướng dẫn tại https://pytorch.org/get-started/locally/
+torch>=2.0
+torchvision>=0.15
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn>=1.3
+scipy
+scikit-image
+opencv-python
+Pillow
+tqdm
+flask>=3.0
+flask-cors
