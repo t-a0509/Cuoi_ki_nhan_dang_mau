@@ -4,7 +4,7 @@ Bài tập cuối kỳ môn Nhận dạng mẫu. Đầu vào là ảnh một chi
 
 | Phương án | Mã nguồn | Kết quả trên tập test 5.668 ảnh |
 |---|---|---|
-| Cơ sở: 1.977 đặc trưng thủ công + Random Forest 500 cây | `Phương án khác/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb` | Accuracy 82,07%, macro-F1 0,7931 |
+| Cơ sở: 1.977 đặc trưng thủ công + Random Forest 500 cây | `Phương án cơ sở/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb` | Accuracy 82,07%, macro-F1 0,7931 |
 | **Cải tiến: ResNet50 học chuyển giao** | `src/`, `scripts/`, `demo/` | **Accuracy 98,57%, macro-F1 0,9769** |
 
 Hai phương án dùng chung một cách chia tập (theo nhóm ảnh gần trùng) và được chấm trên cùng tập test.
@@ -152,7 +152,7 @@ models/    tier3_resnet50_group.pth, tier3_class_mapping.json
 results/   group/ (kết quả ResNet50 trên cách chia theo nhóm), eda/ (thống kê ảnh), comparison/group/ (so sánh),
            các file ở gốc: kết quả trên cách chia ngẫu nhiên
 data/      dataset_splits_group.csv, rf_groups.csv, dataset_splits.csv, corrupt_images.csv, raw/ (tự tải về)
-Phương án khác/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb   notebook phương án cơ sở (Random Forest)
+Phương án cơ sở/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb   notebook phương án cơ sở (Random Forest)
 Nhận_dạng_bệnh_cây_trồng_qua_ảnh_lá/   báo cáo LaTeX: main.tex, bia.tex (trang bìa), figures/
 ```
 

@@ -3,7 +3,7 @@ So sánh ResNet50 với phương án Random Forest của nhóm trên CÙNG tập
 data/dataset_splits_group.csv do scripts/reproduce_rf_split.py tái tạo).
 
 Số liệu Random Forest lấy thẳng từ kết quả notebook đã in ra (mục 6.5 của
-Phương án khác/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb): 4 chỉ số tổng và báo cáo phân loại từng lớp.
+Phương án cơ sở/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb): 4 chỉ số tổng và báo cáo phân loại từng lớp.
 Notebook không lưu dự đoán từng ảnh nên KHÔNG làm được kiểm định ghép cặp (McNemar); thay vào đó so khoảng tin cậy
 95% của từng mô hình: bootstrap cho ResNet50, Wilson cho accuracy của Random Forest.
 
@@ -34,7 +34,7 @@ from sklearn.metrics import precision_recall_fscore_support
 
 from compare_models import METRICS, species, vi, top_pairs, plot_per_class
 
-NOTEBOOK = BASE_DIR / "Phương án khác" / "Nhận_dạng_mẫu" / "Plant_Disease_Detection.ipynb"
+NOTEBOOK = BASE_DIR / "Phương án cơ sở" / "Nhận_dạng_mẫu" / "Plant_Disease_Detection.ipynb"
 PRED_CSV = BASE_DIR / "results" / "group" / "tier3_test_predictions.csv"
 OUT_DIR = BASE_DIR / "results" / "comparison" / "group"
 NAME_A, NAME_B = "ResNet50", "Random Forest"

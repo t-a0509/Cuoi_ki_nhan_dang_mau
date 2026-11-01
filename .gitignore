@@ -16,11 +16,11 @@
 !/models/
 /models/*
 !/models/tier3_class_mapping.json
-!/Phương án khác/
-/Phương án khác/*
-!/Phương án khác/Nhận_dạng_mẫu/
-/Phương án khác/Nhận_dạng_mẫu/*
-!/Phương án khác/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb
+!/Phương án cơ sở/
+/Phương án cơ sở/*
+!/Phương án cơ sở/Nhận_dạng_mẫu/
+/Phương án cơ sở/Nhận_dạng_mẫu/*
+!/Phương án cơ sở/Nhận_dạng_mẫu/Plant_Disease_Detection.ipynb
 
 __pycache__/
 *.pyc
